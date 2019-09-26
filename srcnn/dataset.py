@@ -27,7 +27,7 @@ def prepare_output_image(original_image, input_h, input_w, output_h, output_w):
     return tf.image.convert_image_dtype(output, dtype=tf.float32)
 
 
-def prepare_crops(filename, input_size, stride, scale, padding=None):
+def prepare_crops(filename, input_size, stride, padding=None):
     image_string = tf.io.read_file(filename)
     image = tf.image.decode_bmp(image_string)
     if padding is not None:
@@ -38,7 +38,7 @@ def prepare_crops(filename, input_size, stride, scale, padding=None):
 
 
 def parse_function(filename, input_size, output_size, stride, scale):
-    crops = prepare_crops(filename, input_size, stride, scale)
+    crops = prepare_crops(filename, input_size, stride)
     input_dataset = tf.data.Dataset.from_tensors(crops).map(
         lambda img: prepare_input_image(img, input_size, input_size, scale))
     output_dataset = tf.data.Dataset.from_tensors(crops).map(
