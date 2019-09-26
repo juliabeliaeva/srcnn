@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import pandas as pd
+from IPython.display import display, HTML
 
 
 def plot_image(image, label=''):
@@ -61,3 +63,7 @@ def plot_predictions(model, names, inputs, ground_truth):
         psnr.append([name, f"{psnr_i:.3f}", f"{psnr_o:.3f}"])
 
     return psnr
+
+
+def display_psnr(psnr):
+    display(pd.DataFrame(psnr, columns=["Image Name", "PSNR: Input", "PSNR: SRCNN"]))
