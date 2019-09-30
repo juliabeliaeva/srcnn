@@ -4,12 +4,13 @@ import pandas as pd
 from IPython.display import display, HTML
 
 
-def plot_image(image, label=''):
-    plt.imshow(image)
+def plot_image(image, label=None, **kwargs):
+    plt.imshow(image, kwargs)
     plt.grid(False)
     plt.xticks([])
     plt.yticks([])
-    plt.xlabel(label)
+    if label is not None:
+        plt.xlabel(label)
 
 
 def plot_images(images, grid_size):
