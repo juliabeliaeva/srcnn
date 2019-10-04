@@ -5,7 +5,7 @@ from IPython.display import display, HTML
 
 
 def plot_image(image, label=None, **kwargs):
-    plt.imshow(image, kwargs)
+    plt.imshow(image, **kwargs)
     plt.grid(False)
     plt.xticks([])
     plt.yticks([])
